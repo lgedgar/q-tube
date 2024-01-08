@@ -35,6 +35,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { useDropzone } from "react-dropzone";
 import AddIcon from "@mui/icons-material/Add";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 import { setNotification } from "../../state/features/notificationsSlice";
 import { objectToBase64, uint8ArrayToBase64 } from "../../utils/toBase64";
@@ -195,6 +196,16 @@ export const UploadVideo = ({ editId, editContent }: NewCrowdfundProps) => {
     const responseDataSearchVid = await response.json();
     setSearchResults(responseDataSearchVid);
   };
+
+  function showHelpFileFormats() {
+
+      // TODO: as of writing this does not actually work!  the tab
+      // opens the Q-Blog app but ignores the name/path parts
+      qortalRequest({
+          action: "OPEN_NEW_TAB",
+          qortalLink: "qortal://APP/Q-blog/IronFixXxeR/IFX-Photo/Q-Tube-Video-Encode-Sett-GEYUz0",
+      });
+  }
 
   async function publishQDNResource() {
     try {
@@ -685,7 +696,15 @@ export const UploadVideo = ({ editId, editContent }: NewCrowdfundProps) => {
                   Drag and drop a video files here or click to select files
                 </Typography>
               </Box>
-              
+
+              <StyledButton
+                color="primary"
+                startIcon={<ArrowOutwardIcon />}
+                onClick={showHelpFileFormats}
+                >
+                learn about supported file formats (TODO: BROKEN)
+              </StyledButton>
+
               <Box
                 sx={{
                   display: "flex",

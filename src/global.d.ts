@@ -38,6 +38,7 @@ interface QortalRequestOptions {
   query?: string
   excludeBlocked?: boolean
   exactMatchNames?: boolean
+  qortalLink?: string
 }
 
 declare function qortalRequest(options: QortalRequestOptions): Promise<any>
